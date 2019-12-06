@@ -11,7 +11,9 @@ var app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
-
+/* app.use((err, req, res, next) => {
+  res.json(contants.ErrorInternal)
+}) */
 // index
 app.use('/', indexRouter);
 // users
