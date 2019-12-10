@@ -9,24 +9,22 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var app = express();
 
+//设置跨域请求
+app.all('*', function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.header('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS');
+  res.header('Content-Type', 'application/json;charset=utf-8');
+  next();
+});
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
-/* app.use((err, req, res, next) => {
-  res.json(contants.ErrorInternal)
-}) */
+
 // index
 app.use('/', indexRouter);
 // users
 app.use('/users', usersRouter);
 
-//设置跨域请求
-app.all('*', function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-  res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
-  res.header("Content-Type", "application/json;charset=utf-8");
-  next();
-});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -9,6 +9,7 @@ router.post('/', function(req, res, next) {
   console.log(req.params)
   console.log(req.body)
   console.log(req.query)
+
   let sql="select * from `user`"  //写sql语句
   db.query(sql, function(err, rows) {   //从数据库查询
     console.log(rows)
