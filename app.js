@@ -34,7 +34,10 @@ app.use(function (req, res, next) {
   let secretOrPrivateKey="jwt" // 这是加密的key（密钥）
   jwt.verify(token, secretOrPrivateKey, (err, decode)=> {
     if (err) {  //  时间失效的时候 || 伪造的token
-      res.send({ 'status':10010 })
+      res.send({
+        'msg': '登录过期，请重新登录',
+        'code': 401
+      })
     } else {
       next()
     }

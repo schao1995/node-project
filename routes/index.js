@@ -1,9 +1,11 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express')
+const router = express.Router()
+const db = require('./db')
+const acquireWord = require('./acquireWord')
+/* GET users listing. */
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
-module.exports = router;
+router.post('/', (req, res, next) => {
+  console.log('word')
+  res.send(acquireWord('size'))
+})
+module.exports = router

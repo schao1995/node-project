@@ -1,10 +1,13 @@
-let express = require('express')
-let router = express.Router()
-let db = require('./db')
+const express = require('express')
+const router = express.Router()
+const db = require('./db')
+const acquireWord = require('./acquireWord')
 /* GET users listing. */
 
 router.post('/', (req, res, next) => {
   console.log('word')
-  res.send({ 'a':990 })
+  let acq = acquireWord('size')
+  console.log(acq)
+  res.send(acq)
 })
 module.exports = router
