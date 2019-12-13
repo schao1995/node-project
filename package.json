@@ -20,7 +20,9 @@
     "superagent": "^5.1.2"
   },
   "main": "app.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "request": "^2.88.0"
+  },
   "author": "",
   "license": "ISC",
   "description": ""

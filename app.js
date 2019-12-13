@@ -9,7 +9,8 @@ let jwt = require('jsonwebtoken')
 
 const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
-const wordBookRouter = require('./routes/word-book')
+const wordBookRouter = require('./routes/word-book/word-book')
+const appendWordRouter = require('./routes/word-book/appendWord')
 const app = express()
 
 //设置跨域请求
@@ -49,6 +50,7 @@ app.use(function (req, res, next) {
 app.use('/', indexRouter)
 
 app.use('/word-book', wordBookRouter)
+app.use('/appendWord', appendWordRouter)
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
