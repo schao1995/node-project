@@ -25,7 +25,7 @@ router.post('/', function(req, res, next) {
       let content ={ name: req.body.username } // 要生成token的主题信息
       let secretOrPrivateKey = 'jwt' // 这是加密的key（密钥）
       let token = jwt.sign(content, secretOrPrivateKey, {
-        expiresIn: 60 * 60 * 1  // 1小时过期
+        expiresIn: 60 * 60 * 4  // 4小时过期
       })
       data = {
         code: 0,
@@ -34,6 +34,29 @@ router.post('/', function(req, res, next) {
         isSuccess: true,
         msg: "请求成功"
       }
+      /*let date = new Date()
+      let time = date.toLocaleDateString()
+      let sqlLog = `INSERT INTO operationLog(user, operationContent, time)  VALUES(${req.body.username}, '登录', ${time})`
+      db.query(sqlLog, function(err, rows) {
+        console.log(rows)
+        let data = null
+        if(err) {
+          data = {
+            code: -1,
+            data: null,
+            isSuccess: false,
+            msg: err
+          }
+        } else {
+          data = {
+            code: 0,
+            data: rows,
+            isSuccess: true,
+            msg: "请求成功"
+          }
+        }
+        console.log(data)
+      })*/
     } else {
       data = {
         code: -1,
