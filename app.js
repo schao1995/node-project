@@ -11,6 +11,9 @@ const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
 const wordBookRouter = require('./routes/word-book/word-book')
 const appendWordRouter = require('./routes/word-book/appendWord')
+const essayRouter = require('./routes/essay/essay')
+const readEssayRouter = require('./routes/essay/readEssay')
+const changeEssayRouter = require('./routes/essay/changeEssay')
 const app = express()
 
 //设置跨域请求
@@ -51,6 +54,9 @@ app.use('/', indexRouter)
 
 app.use('/word-book', wordBookRouter)
 app.use('/appendWord', appendWordRouter)
+app.use('/essay', essayRouter)
+app.use('/readEssay', readEssayRouter)
+app.use('/changeEssay', changeEssayRouter)
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))

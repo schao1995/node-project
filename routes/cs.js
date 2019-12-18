@@ -1,7 +1,3 @@
-
-let timeOne = new Date(('2019-01-02').replace(/-/g,"/"))
-let timeTwo = new Date(('2019-01-01').replace(/-/g,"/"))
-console.log(timeOne)
-console.log(timeTwo)
-console.log(timeOne > timeTwo)
-console.log(timeOne < timeTwo)
+var str = '000p111p222p333'
+str = str.replace(/(.*)p/, '$1div')
+console.log(str)  //000p111p222div333
