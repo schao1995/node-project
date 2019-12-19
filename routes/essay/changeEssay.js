@@ -26,7 +26,8 @@ router.post('/', (req, res, next) => {
       }
       console.log('done!');
     })
-    let sql = 'update essay set title=\'' + title + '\',explain=\'' + explain + '\' where id=' + id
+    let sql = 'update essay set title=\'' + title + '\',`explain`=\'' + explain + '\' where id=' + id
+    // let sql = 'update essay set title=\'' + title + '\' where id=' + id
     console.log(sql)
     db.query(sql, function(err, rows) {
       console.log(rows)
@@ -50,7 +51,8 @@ router.post('/', (req, res, next) => {
     })
   } else {
     fs.writeFileSync('../../../node-project-essay/' + title + '.html', content)
-    let sql = 'insert into essay values(title, explain),(' + title + ',' + explain + ')'
+    let sql = 'insert into essay (title, `explain`) values (\'' + title + '\',\'' + explain + '\')'
+    console.log(sql)
     db.query(sql, function(err, rows) {
       console.log(rows)
       let data = null

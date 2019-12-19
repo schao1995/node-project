@@ -32,7 +32,7 @@ router.post('/', (req, res, next) => {
   // res.send(acq)
 })
 function appendWordToSql (data, res) {
-  let sql = `INSERT INTO wordBook(time, word, soundmarkF, soundmarkS, paraphrase)  VALUES('${data.time}','${data.word}','${data.soundmarkF}','${data.soundmarkS}','${data.paraphrase}')`
+  let sql = `INSERT INTO wordBook(time, word, soundmarkF, soundmarkS, paraphrase) VALUES ('${data.time}','${data.word}','${data.soundmarkF}','${data.soundmarkS}','${data.paraphrase}')`
   console.log(sql)
   let appendData = [
     data.time,
