@@ -5,7 +5,7 @@ const db = require('../db')
 
 router.post('/', (req, res, next) => {
   // console.log('word-book')
-  let sql = 'select * from painting LIMIT 0, 10' //写sql语句
+  let sql = 'INSERT INTO painting' //写sql语句
   // console.log(sql)
   db.query(sql, function(err, rows) {   //从数据库查询
     console.log(rows)
@@ -17,19 +17,12 @@ router.post('/', (req, res, next) => {
         isSuccess: false,
         msg: err
       }
-    } else if (rows.length > 0) {
+    } else {
       data = {
         code: 0,
         data: rows,
         isSuccess: true,
         msg: "请求成功"
-      }
-    } else {
-      data = {
-        code: 1,
-        data: rows,
-        isSuccess: true,
-        msg: ""
       }
     }
     console.log(data)

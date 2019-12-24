@@ -14,6 +14,7 @@ const appendWordRouter = require('./routes/word-book/appendWord')
 const essayRouter = require('./routes/essay/essay')
 const readEssayRouter = require('./routes/essay/readEssay')
 const changeEssayRouter = require('./routes/essay/changeEssay')
+const selectPaintingRouter = require('./routes/painting/selectPainting')
 const app = express()
 
 //设置跨域请求
@@ -31,18 +32,23 @@ app.use(bodyParser.json())
 // app.use('/users', urlencodedParser, usersRouter)
 app.use('/users', usersRouter)
 
+// 访问图片路径
+app.use('/static', express.static('public'))
+
 // 中间件验证token
 app.use(function (req, res, next) {
-  console.log('LOGGED')
+  console.log('中间件')
   let token = req.headers['token'] // 获取token
   let secretOrPrivateKey="jwt" // 这是加密的key（密钥）
   jwt.verify(token, secretOrPrivateKey, (err, decode)=> {
     if (err) {  //  时间失效的时候 || 伪造的token
+      console.log('1')
       res.send({
         'msg': '登录过期，请重新登录',
         'code': 401
       })
     } else {
+      console.log('2')
       next()
     }
   })
@@ -57,6 +63,7 @@ app.use('/appendWord', appendWordRouter)
 app.use('/essay', essayRouter)
 app.use('/readEssay', readEssayRouter)
 app.use('/changeEssay', changeEssayRouter)
+app.use('/selectPainting', selectPaintingRouter)
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
