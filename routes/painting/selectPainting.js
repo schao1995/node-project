@@ -17,6 +17,9 @@ router.post('/', (req, res, next) => {
         msg: err
       }
     } else if (rows.length > 0) {
+      for (let i = 0; i < rows.length; i++) {
+        rows[i].srcList = rows[i].srcList.split(',')
+      }
       data = {
         code: 0,
         data: rows,

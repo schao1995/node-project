@@ -15,6 +15,7 @@ const essayRouter = require('./routes/essay/essay')
 const readEssayRouter = require('./routes/essay/readEssay')
 const changeEssayRouter = require('./routes/essay/changeEssay')
 const selectPaintingRouter = require('./routes/painting/selectPainting')
+const appendPaintingRouter = require('./routes/painting/appendPainting')
 const app = express()
 
 //设置跨域请求
@@ -64,6 +65,7 @@ app.use('/essay', essayRouter)
 app.use('/readEssay', readEssayRouter)
 app.use('/changeEssay', changeEssayRouter)
 app.use('/selectPainting', selectPaintingRouter)
+app.use('/appendPainting', appendPaintingRouter)
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
